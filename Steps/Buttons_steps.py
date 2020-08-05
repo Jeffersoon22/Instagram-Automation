@@ -1,5 +1,4 @@
 import time
-from appium import webdriver
 from Helper.printColored import PrintColored as printColored
 from Steps.Login_steps import LoginAutomation
 
@@ -9,6 +8,7 @@ class ButtonsAutomation:
         self.driver = LoginAutomation().driver
 
     def check_home_button(self):
+        self.driver.save_screenshot('Screenshots/'+'Home_button_on_page.png')
         time.sleep(3)
         printColored('იძებნება ჰოუმ ღლაკი').waiting()
         try:
@@ -20,6 +20,7 @@ class ButtonsAutomation:
             printColored('ჰოუმის ღილაკი არ არსებობს').failed()
 
     def check_search_button(self):
+        self.driver.save_screenshot('Screenshots/'+'Search_button_on_page.png')
         printColored('იძებნება ძებნის ღილაკი').waiting()
         try:
             search_button = self.driver.find_element_by_accessibility_id('Search and explore')
@@ -30,6 +31,7 @@ class ButtonsAutomation:
             printColored('ძებნის ხატულა არ მოიძებნა').failed()
 
     def check_add_icon(self):
+        self.driver.save_screenshot('Screenshots/'+'Add_Post_button_on_page.png')
         printColored('იძებნება პოსტის დამატების ღილაკი').waiting()
         try:
             add_button = self.driver.find_element_by_xpath('//android.widget.FrameLayout[@content-desc="Camera"]')
@@ -39,7 +41,8 @@ class ButtonsAutomation:
         except:
             printColored('ახალი პსოტისთვის ღილაკი ვერ მოიძებნა').failed()
 
-    def check_following_heart_button(self):
+    def check_Activity_button(self):
+        self.driver.save_screenshot('Screenshots/'+'Activity_button_on_page.png')
         printColored('იძებნება სიახლეების ღილაკი ♡').waiting()
         try:
             heart_button = self.driver.find_element_by_accessibility_id('Activity')
@@ -50,6 +53,7 @@ class ButtonsAutomation:
             printColored('სიახლეების ღილაკი ვერ მოიძებნა').failed()
 
     def check_profile_button(self):
+        self.driver.save_screenshot('Screenshots/'+'Profile_button_on_page.png')
         printColored('იძებნება პროფილის ღილაკი').waiting()
         try:
             profile_button = self.driver.find_element_by_accessibility_id('Profile')
@@ -63,4 +67,5 @@ class ButtonsAutomation:
         time.sleep(2)
         printColored('აპლიკაცია იხურება').waiting()
         self.driver.close_app()
+        self.driver.save_screenshot('Screenshots/'+'Close.png')
         printColored('აპლიკაცია დაიხურა').success()
